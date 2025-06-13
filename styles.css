@@ -65,20 +65,23 @@ input[type="text"], select {
   font-size: 14px;
 }
 
-/* Botão login */
+/* Botão login destacado */
 .login-btn {
   padding: 12px;
-  background-color: #ff69b4;
+  background: linear-gradient(to right, #91c5ff, #f9a8d4);
   color: white;
-  border: 1px solid black;
-  border-radius: 8px;
+  border: none;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
-  transition: background-color 0.3s;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .login-btn:hover {
-  background-color: #e0579f;
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 /* Tela de início */
