@@ -28,19 +28,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Exibir mensagem personalizada na home
+  // Exibir saudação na home
   const usuario = JSON.parse(localStorage.getItem("usuario") || sessionStorage.getItem("usuario"));
   if (usuario && window.location.pathname.includes("home.html")) {
     document.querySelector(".mensagem-boas-vindas")?.insertAdjacentHTML("afterbegin", `<p>Olá, ${usuario.nome}!</p>`);
   }
 });
 
-// Navegar para o catálogounction irParaCatalogo() {
+// Ir para o catálogo
+function irParaCatalogo() {
   window.location.href = "catalogo.html";
 }
 
-// Carrinho
+// Carrinho de compras
 const carrinho = [];
+
 function alterarQuantidade(id, valor) {
   const span = document.getElementById(`qtd-${id}`);
   let qtd = parseInt(span.textContent) + valor;
@@ -77,20 +79,19 @@ function finalizarCompra() {
     return;
   }
 
-  let mensagem = `Olá, tenho um pedido:\n`;
+  let mensagem = `Olá, gostaria de fazer um pedido:\n\n`;
   let total = 0;
 
   carrinho.forEach(item => {
-    mensagem += `- ${item.produto}: ${item.qtd} unidade(s)\n`;
+    mensagem += `• ${item.produto}: ${item.qtd} unidade(s)\n`;
     total += item.preco * item.qtd;
   });
 
-  mensagem += `Total: R$ ${total.toFixed(2)}\n`;
-  mensagem += `Nome: ${usuario.nome} ${usuario.sobrenome}\n`;
-  mensagem += `Turma: ${usuario.turma}\n`;
-  mensagem += `Tipo de entrega: ${usuario.tipoEntrega}`;
+  mensagem += `\n💰 Total: R$ ${total.toFixed(2)}\n`;
+  mensagem += `👤 Nome: ${usuario.nome} ${usuario.sobrenome}\n`;
+  mensagem += `🏫 Turma: ${usuario.turma}\n`;
+  mensagem += `📦 Tipo de entrega: ${usuario.tipoEntrega}`;
 
   const url = `https://wa.me/5541996597922?text=${encodeURIComponent(mensagem)}`;
   window.open(url, "_blank");
 }
-
