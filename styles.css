@@ -1,4 +1,5 @@
-/* Reset básico */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
@@ -6,104 +7,72 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(to bottom right, #66b3ff, #b366ff);
-  color: #333;
-  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #70c1ff, #a58cff);
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-/* Container principal da página de login */
 .login-container {
-  background-color: white;
-  padding: 40px 20px;
+  background: white;
+  padding: 40px 30px;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  max-width: 400px;
-  width: 90%;
-  border: 1px solid black;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
   text-align: center;
+  border: 1px solid black;
+  width: 380px;
 }
 
-/* Título com fonte moderna e destaque */
 .title {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 32px;
   color: #ff4da6;
   margin-bottom: 10px;
 }
 
-/* Slogan com mais destaque */
 .subtitle {
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: bold;
   color: #333;
   margin-bottom: 30px;
 }
 
-/* Formulário */
 form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  align-items: center;
+  gap: 15px;
+}
+
+input[type="text"],
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
   width: 100%;
 }
 
-/* Campos do formulário */
-form input,
-form select,
-form button,
-form label {
-  width: 80%;
-  margin: 0 auto;
-}
-
-input, select {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-}
-
-/* Checkbox e texto alinhado */
-form label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  justify-content: flex-start;
-}
-
-/* Botão */
 .login-btn {
-  background-color: #ff66b2;
+  background-color: #ff4da6;
   color: white;
-  padding: 12px;
   border: none;
+  padding: 12px;
   border-radius: 8px;
-  font-weight: bold;
-  font-size: 16px;
   cursor: pointer;
-  transition: 0.3s;
+  font-size: 16px;
+  transition: background 0.3s ease;
 }
 
 .login-btn:hover {
-  background-color: #e0559c;
+  background-color: #e14394;
 }
 
-/* Responsivo */
-@media screen and (max-width: 480px) {
-  .login-container {
-    padding: 30px 15px;
-  }
-
-  .title {
-    font-size: 28px;
-  }
-
-  input, select {
-    font-size: 15px;
-  }
+label {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  gap: 6px;
+  margin-top: -5px;
 }
