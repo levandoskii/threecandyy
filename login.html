@@ -2,44 +2,126 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three Candy - Login</title>
   <link rel="stylesheet" href="styles.css">
-</head>
-<body class="login-body">
-  <div class="login-container">
-    <h1>Three Candy</h1>
-    <p class="slogan">Três vezes mais sabor, carinho e alegria</p>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #76b5ff, #a077ff); /* azul gradiente */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
 
+    .login-container {
+      background-color: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .title {
+      font-family: 'Pacifico', cursive;
+      font-size: 36px;
+      color: #ff69b4; /* rosa */
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #333;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-row label {
+      font-size: 15px;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #ff69b4; /* rosa */
+      color: white;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-btn:hover {
+      background-color: #e655a4;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1 class="title">Three Candy</h1>
+    <p class="subtitle">Três vezes mais sabor, carinho e alegria</p>
     <form id="loginForm">
-      <input type="text" id="nome" placeholder="Nome" required>
-      <input type="text" id="sobrenome" placeholder="Sobrenome" required>
-      <input type="text" id="turma" placeholder="Turma" required>
-      <select id="tipoEntrega" required>
+      <input type="text" placeholder="Nome" id="nome" required>
+      <input type="text" placeholder="Sobrenome" id="sobrenome" required>
+      <input type="text" placeholder="Turma" id="turma" required>
+      <select id="tipoEntrega">
         <option value="encomenda">Encomenda</option>
         <option value="hoje">Entrega no dia</option>
       </select>
-      <label><input type="checkbox" id="manterLogado"> Manter conectado</label>
-      <button type="submit">Entrar</button>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="manterLogado">
+        <label for="manterLogado">Manter conectado</label>
+      </div>
+
+      <button type="submit" class="login-btn">Entrar</button>
     </form>
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const dados = {
-        nome: document.getElementById("nome").value.trim(),
-        sobrenome: document.getElementById("sobrenome").value.trim(),
-        turma: document.getElementById("turma").value.trim(),
-        tipoEntrega: document.getElementById("tipoEntrega").value
+      const nome = document.getElementById('nome').value;
+      const sobrenome = document.getElementById('sobrenome').value;
+      const turma = document.getElementById('turma').value;
+      const tipoEntrega = document.getElementById('tipoEntrega').value;
+      const manterLogado = document.getElementById('manterLogado').checked;
+
+      const usuario = {
+        nome,
+        sobrenome,
+        turma,
+        tipoEntrega
       };
 
-      const manter = document.getElementById("manterLogado").checked;
-
-      if (manter) {
-        localStorage.setItem("dadosUsuario", JSON.stringify(dados));
+      if (manterLogado) {
+        localStorage.setItem('usuarioThreeCandy', JSON.stringify(usuario));
       } else {
-        sessionStorage.setItem("dadosUsuario", JSON.stringify(dados));
+        sessionStorage.setItem('usuarioThreeCandy', JSON.stringify(usuario));
       }
 
       window.location.href = "home.html";
