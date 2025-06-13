@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Exibir saudação na home
+  // Mostrar saudação na home
   const usuario = JSON.parse(localStorage.getItem("usuario") || sessionStorage.getItem("usuario"));
   if (usuario && window.location.pathname.includes("home.html")) {
     document.querySelector(".mensagem-boas-vindas")?.insertAdjacentHTML("afterbegin", `<p>Olá, ${usuario.nome}!</p>`);
@@ -79,7 +79,7 @@ function finalizarCompra() {
     return;
   }
 
-  let mensagem = `Olá, gostaria de fazer um pedido:\n\n`;
+  let mensagem = `Olá, tenho um pedido:\n\n`;
   let total = 0;
 
   carrinho.forEach(item => {
@@ -87,10 +87,11 @@ function finalizarCompra() {
     total += item.preco * item.qtd;
   });
 
-  mensagem += `\n💰 Total: R$ ${total.toFixed(2)}\n`;
-  mensagem += `👤 Nome: ${usuario.nome} ${usuario.sobrenome}\n`;
-  mensagem += `🏫 Turma: ${usuario.turma}\n`;
-  mensagem += `📦 Tipo de entrega: ${usuario.tipoEntrega}`;
+  mensagem += `\nTotal: R$ ${total.toFixed(2)}\n\n`;
+  mensagem += `Dados do cliente:\n`;
+  mensagem += `• Nome: ${usuario.nome} ${usuario.sobrenome}\n`;
+  mensagem += `• Turma: ${usuario.turma}\n`;
+  mensagem += `• Tipo de entrega: ${usuario.tipoEntrega}`;
 
   const url = `https://wa.me/5541996597922?text=${encodeURIComponent(mensagem)}`;
   window.open(url, "_blank");
