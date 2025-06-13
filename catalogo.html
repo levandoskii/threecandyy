@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Candy - Catálogo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="catalogo-body">
+  <h1>Catálogo</h1>
+  <div class="produtos">
+    <div class="produto" data-nome="Halls" data-preco="3.5">
+      <p>Halls - R$ 3,50</p>
+      <button onclick="alterarQuantidade(this, -1)">-</button>
+      <span>0</span>
+      <button onclick="alterarQuantidade(this, 1)">+</button>
+      <button onclick="adicionar(this)">Adicionar</button>
+    </div>
+    <div class="produto" data-nome="Trident" data-preco="4.5">
+      <p>Trident - R$ 4,50</p>
+      <button onclick="alterarQuantidade(this, -1)">-</button>
+      <span>0</span>
+      <button onclick="alterarQuantidade(this, 1)">+</button>
+      <button onclick="adicionar(this)">Adicionar</button>
+    </div>
+    <div class="produto" data-nome="Palha Italiana" data-preco="7.0">
+      <p>Palha Italiana - R$ 7,00</p>
+      <button onclick="alterarQuantidade(this, -1)">-</button>
+      <span>0</span>
+      <button onclick="alterarQuantidade(this, 1)">+</button>
+      <button onclick="adicionar(this)">Adicionar</button>
+    </div>
+  </div>
+
+  <div class="carrinho">
+    <h2>Carrinho</h2>
+    <ul id="itens"></ul>
+    <p id="total">Total: R$ 0,00</p>
+    <button onclick="pagar()">Pagar via WhatsApp</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
