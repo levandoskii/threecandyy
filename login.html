@@ -1,102 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three Candy - Login</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom, #76b5ff, #a077ff);
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .login-container {
-      background-color: white;
-      padding: 40px 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      border: 1px solid black;
-      width: 90%;
-      max-width: 420px;
-      box-sizing: border-box;
-    }
-
-    .title {
-      font-family: 'Pacifico', cursive;
-      font-size: 36px;
-      color: #ff69b4;
-      text-align: center;
-      margin-bottom: 10px;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: #333;
-      font-weight: bold;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      box-sizing: border-box;
-    }
-
-    .checkbox-row {
-      display: flex;
-      align-items: center;
-      align-self: flex-start;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .checkbox-row label {
-      font-size: 15px;
-    }
-
-    .login-btn {
-      width: 100%;
-      padding: 12px;
-      background-color: #ff69b4;
-      color: white;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .login-btn:hover {
-      background-color: #e655a4;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="login-container">
     <h1 class="title">Three Candy</h1>
     <p class="subtitle">Três vezes mais sabor, carinho e alegria</p>
     <form id="loginForm">
-      <input type="text" placeholder="Nome" id="nome" required>
-      <input type="text" placeholder="Sobrenome" id="sobrenome" required>
-      <input type="text" placeholder="Turma" id="turma" required>
+      <input type="text" id="nome" placeholder="Nome" required>
+      <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+      <input type="text" id="turma" placeholder="Turma" required>
+      
       <select id="tipoEntrega">
         <option value="encomenda">Encomenda</option>
         <option value="hoje">Entrega no dia</option>
@@ -112,30 +30,24 @@
   </div>
 
   <script>
-    document.getElementById('loginForm').addEventListener('submit', function(e) {
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const nome = document.getElementById('nome').value;
-      const sobrenome = document.getElementById('sobrenome').value;
-      const turma = document.getElementById('turma').value;
-      const tipoEntrega = document.getElementById('tipoEntrega').value;
-      const manterLogado = document.getElementById('manterLogado').checked;
+      const nome = document.getElementById("nome").value;
+      const sobrenome = document.getElementById("sobrenome").value;
+      const turma = document.getElementById("turma").value;
+      const tipoEntrega = document.getElementById("tipoEntrega").value;
 
-      const usuario = {
-        nome,
-        sobrenome,
-        turma,
-        tipoEntrega
-      };
+      // Armazena no localStorage
+      localStorage.setItem("nome", nome);
+      localStorage.setItem("sobrenome", sobrenome);
+      localStorage.setItem("turma", turma);
+      localStorage.setItem("tipoEntrega", tipoEntrega);
 
-      if (manterLogado) {
-        localStorage.setItem('usuarioThreeCandy', JSON.stringify(usuario));
-      } else {
-        sessionStorage.setItem('usuarioThreeCandy', JSON.stringify(usuario));
-      }
-
+      // Redireciona para a página inicial
       window.location.href = "home.html";
     });
   </script>
 </body>
 </html>
+
