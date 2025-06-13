@@ -1,133 +1,109 @@
-body {
+/* Reset básico */
+* {
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #fce4ec, #e3f2fd);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #66b3ff, #b366ff);
   color: #333;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-h1.title {
-  font-size: 2.5em;
-  color: #ec407a;
-  text-align: center;
-}
-
-h2.slogan {
-  color: #42a5f5;
-  font-weight: 500;
-  text-align: center;
-}
-
-form, .home-container, .catalogo-container {
-  background: white;
-  padding: 20px;
+/* Container principal da página de login */
+.login-container {
+  background-color: white;
+  padding: 40px 20px;
   border-radius: 20px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  width: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   max-width: 400px;
-  margin-top: 20px;
-}
-
-input, select, button {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  font-size: 1em;
-}
-
-button {
-  background: #ec407a;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-button:hover {
-  background: #d81b60;
-}
-
-.catalogo-container {
-  max-width: 800px;
-}
-
-.produtos {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.produto {
-  background: #f8f9fa;
-  border-radius: 15px;
-  padding: 15px;
+  width: 90%;
+  border: 1px solid black;
   text-align: center;
-  width: 200px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
 }
 
-.produto p {
-  font-weight: bold;
+/* Título com fonte moderna e destaque */
+.title {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 32px;
+  color: #ff4da6;
   margin-bottom: 10px;
 }
 
-.produto button {
-  width: 40px;
-  margin: 5px;
+/* Slogan com mais destaque */
+.subtitle {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 30px;
 }
 
-span {
-  display: inline-block;
-  width: 30px;
-}
-
-.carrinho {
-  margin-top: 30px;
-  background: #fff8e1;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.logo {
-  width: 150px;
-  display: block;
-  margin: 0 auto 20px;
-}
-
-.mensagem-boas-vindas {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1.1em;
-}
-
-.icones-info {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 40px;
-  flex-wrap: wrap;
-}
-
-.info-item {
+/* Formulário */
+form {
   display: flex;
   flex-direction: column;
+  gap: 12px;
   align-items: center;
-  max-width: 100px;
-  text-align: center;
+  width: 100%;
 }
 
-.info-item img {
-  width: 50px;
-  height: 50px;
-  margin-bottom: 10px;
+/* Campos do formulário */
+form input,
+form select,
+form button,
+form label {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.hidden {
-  display: none;
+input, select {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Checkbox e texto alinhado */
+form label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  justify-content: flex-start;
+}
+
+/* Botão */
+.login-btn {
+  background-color: #ff66b2;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #e0559c;
+}
+
+/* Responsivo */
+@media screen and (max-width: 480px) {
+  .login-container {
+    padding: 30px 15px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  input, select {
+    font-size: 15px;
+  }
 }
