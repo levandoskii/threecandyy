@@ -8,9 +8,8 @@ body {
 /* ====== LOGIN PAGE ====== */
 .login-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
   background: linear-gradient(to right, #91c5ff, #f9a8d4);
 }
@@ -51,7 +50,6 @@ body {
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  align-items: center;
 }
 
 .login-box input,
@@ -66,9 +64,8 @@ body {
 .checkbox-group {
   display: flex;
   align-items: center;
-  align-self: flex-start;
-  margin-top: -5px;
-  margin-bottom: 5px;
+  margin-top: -10px;
+  margin-bottom: 10px;
 }
 
 .checkbox-group input {
