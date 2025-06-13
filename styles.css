@@ -5,7 +5,7 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-/* ====== LOGIN PAGE ====== */
+/* ====== LOGIN ====== */
 .login-container {
   display: flex;
   justify-content: center;
@@ -64,16 +64,9 @@ body {
 .checkbox-group {
   display: flex;
   align-items: center;
-  margin-top: -10px;
-  margin-bottom: 10px;
-}
-
-.checkbox-group input {
-  margin-right: 6px;
-}
-
-.checkbox-group label {
-  font-size: 14px;
+  gap: 6px;
+  margin-top: -8px;
+  margin-bottom: 12px;
 }
 
 .login-box button {
@@ -90,91 +83,4 @@ body {
 
 .login-box button:hover {
   background-color: #e0559e;
-}
-
-/* ====== HOME PAGE ====== */
-.inicio-body {
-  background: linear-gradient(to right, #91c5ff, #f9a8d4);
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-}
-
-.inicio-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.titulo-principal {
-  font-size: 56px;
-  font-weight: 900;
-  background: linear-gradient(to right, #ff69b4, #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
-  margin-bottom: 20px;
-}
-
-.logo-img {
-  width: 140px;
-  margin-bottom: 20px;
-}
-
-.slogan {
-  font-size: 22px;
-  font-style: italic;
-  color: #444;
-  margin-bottom: 40px;
-}
-
-.boas-vindas {
-  font-size: 18px;
-  font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 25px;
-  border-radius: 12px;
-  margin-bottom: 40px;
-  line-height: 1.7;
-  max-width: 800px;
-}
-
-.botao-catalogo {
-  display: inline-block;
-  background-color: #fff;
-  color: #000;
-  padding: 14px 28px;
-  border: 2px solid #000;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 18px;
-  text-decoration: none;
-  margin-bottom: 60px;
-  transition: background 0.3s ease;
-}
-
-.botao-catalogo:hover {
-  background-color: #f0f0f0;
-}
-
-.info-boxes {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.info-item {
-  width: 200px;
-  text-align: center;
-}
-
-.info-item img {
-  width: 90px;
-  height: 90px;
-  margin-bottom: 12px;
 }
