@@ -17,16 +17,12 @@ body {
 
 .login-container {
   background: #fff;
-  border: 1px solid #000; /* Borda preta fina */
+  border: 1px solid #000;
   border-radius: 15px;
   padding: 40px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 380px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .title {
@@ -47,6 +43,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
 }
 
 input[type="text"],
@@ -61,7 +58,7 @@ select {
 .login-btn {
   background-color: #ff4da6;
   color: white;
-  border: 1px solid black; /* Borda preta no botão */
+  border: 1px solid black;
   padding: 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -79,5 +76,5 @@ select {
   font-size: 14px;
   gap: 5px;
   margin-top: -8px;
-  justify-content: start;
+  justify-content: flex-start;
 }
