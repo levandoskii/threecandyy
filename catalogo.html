@@ -1,43 +1,191 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Three Candy - Catálogo</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #91c5ff, #f9a8d4);
+    }
+
+    .catalogo-container {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      border: 1px solid #000;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 800;
+      color: #ff69b4;
+      margin-bottom: 30px;
+    }
+
+    .produtos {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .produto {
+      background: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .produto p {
+      margin: 0;
+      font-weight: bold;
+    }
+
+    .produto button {
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid black;
+      background-color: #ff69b4;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      width: fit-content;
+    }
+
+    .produto span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .carrinho {
+      margin-top: 40px;
+      border-top: 2px solid #ccc;
+      padding-top: 20px;
+    }
+
+    .carrinho h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .carrinho ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .carrinho li {
+      margin-bottom: 5px;
+    }
+
+    .carrinho button {
+      margin-top: 10px;
+      padding: 10px;
+      font-weight: bold;
+      border: 1px solid black;
+      border-radius: 6px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+
+    .carrinho button:hover {
+      background-color: #218838;
+    }
+  </style>
 </head>
-<body class="catalogo-body">
-  <h1>Catálogo</h1>
-  <div class="produtos">
-    <div class="produto" data-nome="Halls" data-preco="3.5">
-      <p>Halls - R$ 3,50</p>
-      <button onclick="alterarQuantidade(this, -1)">-</button>
-      <span>0</span>
-      <button onclick="alterarQuantidade(this, 1)">+</button>
-      <button onclick="adicionar(this)">Adicionar</button>
+<body>
+  <div class="catalogo-container">
+    <h1>Catálogo</h1>
+    <div class="produtos">
+      <div class="produto">
+        <p>Halls - R$ 3,50</p>
+        <div>
+          <button onclick="alterarQuantidade('halls', -1)">-</button>
+          <span id="qtd-halls">0</span>
+          <button onclick="alterarQuantidade('halls', 1)">+</button>
+          <button onclick="adicionarAoCarrinho('Halls', 3.5, 'qtd-halls')">Adicionar</button>
+        </div>
+      </div>
+      <div class="produto">
+        <p>Trident - R$ 4,50</p>
+        <div>
+          <button onclick="alterarQuantidade('trident', -1)">-</button>
+          <span id="qtd-trident">0</span>
+          <button onclick="alterarQuantidade('trident', 1)">+</button>
+          <button onclick="adicionarAoCarrinho('Trident', 4.5, 'qtd-trident')">Adicionar</button>
+        </div>
+      </div>
+      <div class="produto">
+        <p>Palha Italiana - R$ 7,00</p>
+        <div>
+          <button onclick="alterarQuantidade('palha', -1)">-</button>
+          <span id="qtd-palha">0</span>
+          <button onclick="alterarQuantidade('palha', 1)">+</button>
+          <button onclick="adicionarAoCarrinho('Palha Italiana', 7.0, 'qtd-palha')">Adicionar</button>
+        </div>
+      </div>
     </div>
-    <div class="produto" data-nome="Trident" data-preco="4.5">
-      <p>Trident - R$ 4,50</p>
-      <button onclick="alterarQuantidade(this, -1)">-</button>
-      <span>0</span>
-      <button onclick="alterarQuantidade(this, 1)">+</button>
-      <button onclick="adicionar(this)">Adicionar</button>
-    </div>
-    <div class="produto" data-nome="Palha Italiana" data-preco="7.0">
-      <p>Palha Italiana - R$ 7,00</p>
-      <button onclick="alterarQuantidade(this, -1)">-</button>
-      <span>0</span>
-      <button onclick="alterarQuantidade(this, 1)">+</button>
-      <button onclick="adicionar(this)">Adicionar</button>
+
+    <div class="carrinho">
+      <h2>Carrinho</h2>
+      <ul id="itensCarrinho"></ul>
+      <p id="precoTotal">Total: R$ 0,00</p>
+      <button onclick="finalizarCompra()">Pagar via WhatsApp</button>
     </div>
   </div>
 
-  <div class="carrinho">
-    <h2>Carrinho</h2>
-    <ul id="itens"></ul>
-    <p id="total">Total: R$ 0,00</p>
-    <button onclick="pagar()">Pagar via WhatsApp</button>
-  </div>
+  <script>
+    const carrinho = [];
+    
+    function alterarQuantidade(id, delta) {
+      const span = document.getElementById(`qtd-${id}`);
+      let atual = parseInt(span.textContent);
+      atual = Math.max(0, atual + delta);
+      span.textContent = atual;
+    }
 
-  <script src="script.js"></script>
+    function adicionarAoCarrinho(produto, preco, spanId) {
+      const qtd = parseInt(document.getElementById(spanId).textContent);
+      if (qtd > 0) {
+        carrinho.push({ produto, preco, qtd });
+        atualizarCarrinho();
+        document.getElementById(spanId).textContent = 0;
+      }
+    }
+
+    function atualizarCarrinho() {
+      const lista = document.getElementById("itensCarrinho");
+      const totalSpan = document.getElementById("precoTotal");
+      lista.innerHTML = "";
+      let total = 0;
+      carrinho.forEach((item) => {
+        lista.innerHTML += `<li>${item.qtd}x ${item.produto} - R$ ${(item.preco * item.qtd).toFixed(2)}</li>`;
+        total += item.preco * item.qtd;
+      });
+      totalSpan.textContent = `Total: R$ ${total.toFixed(2)}`;
+    }
+
+    function finalizarCompra() {
+      if (carrinho.length === 0) return alert("Seu carrinho está vazio!");
+      let mensagem = "Olá! Quero fazer um pedido:%0A";
+      carrinho.forEach(item => {
+        mensagem += `${item.qtd}x ${item.produto} - R$ ${(item.preco * item.qtd).toFixed(2)}%0A`;
+      });
+      const total = carrinho.reduce((acc, item) => acc + item.preco * item.qtd, 0);
+      mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
+      window.open(`https://wa.me/5541996597922?text=${mensagem}`, "_blank");
+    }
+  </script>
 </body>
 </html>
