@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
 * {
   margin: 0;
@@ -7,26 +7,29 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #70c1ff, #a58cff);
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #70c1ff, #fba2d0); /* Fundo azul-rosa */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
 }
 
 .login-container {
-  background: white;
-  padding: 40px 30px;
-  border-radius: 20px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  text-align: center;
-  border: 1px solid black;
+  background: #fff;
+  border: 1px solid #000; /* Borda preta fina */
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   width: 380px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
-  font-family: 'Poppins', sans-serif;
   font-size: 32px;
   color: #ff4da6;
   margin-bottom: 10px;
@@ -36,10 +39,11 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #333;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 form {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -47,7 +51,7 @@ form {
 
 input[type="text"],
 select {
-  padding: 10px;
+  padding: 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
   outline: none;
@@ -57,7 +61,7 @@ select {
 .login-btn {
   background-color: #ff4da6;
   color: white;
-  border: 1px solid black; /* 🔲 Borda preta fina */
+  border: 1px solid black; /* Borda preta no botão */
   padding: 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -69,12 +73,11 @@ select {
   background-color: #e14394;
 }
 
-label {
+.checkbox-row {
   display: flex;
   align-items: center;
   font-size: 14px;
-  gap: 4px;
-  margin-top: -10px;
-  margin-bottom: -5px;
+  gap: 5px;
+  margin-top: -8px;
+  justify-content: start;
 }
-
