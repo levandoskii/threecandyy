@@ -1,86 +1,64 @@
-/* ====== ESTILO GERAL ====== */
+/* Estilo geral */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #91c5ff, #f9a8d4);
 }
 
-/* ====== LOGIN ====== */
+/* Tela de login */
 .login-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background: linear-gradient(to right, #91c5ff, #f9a8d4);
 }
 
 .login-box {
   background-color: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 400px;
+  width: 100%;
 }
 
 .login-box h1 {
-  font-size: 36px;
+  text-align: center;
+  font-size: 32px;
   font-weight: 800;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #ff69b4, #007bff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  color: #ff69b4;
+  font-family: 'Segoe UI', sans-serif;
+  letter-spacing: 1px;
 }
 
-.login-box .slogan {
+.login-box h2 {
+  text-align: center;
   font-size: 16px;
   font-weight: 500;
-  margin-bottom: 30px;
-  text-align: center;
+  margin-bottom: 24px;
   color: #555;
 }
 
-.login-box form {
+/* Formulário */
+form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 100%;
+  gap: 16px;
 }
 
-.login-box input,
-.login-box select {
-  padding: 12px;
+input[type="text"], select {
+  padding: 10px;
+  border: 1px solid #999;
   border-radius: 8px;
-  border: 1px solid #ccc;
-  width: 100%;
-  font-size: 14px;
-}
-
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: -8px;
-  margin-bottom: 12px;
-}
-
-.login-box button {
-  padding: 12px;
-  background-color: #ff69b4;
-  color: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-weight: bold;
   font-size: 16px;
-  cursor: pointer;
-  width: 100%;
 }
 
-.login-box button:hover {
-  background-color: #e0559e;
-}
+/* Entrega + checkbox */
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+  font
+
