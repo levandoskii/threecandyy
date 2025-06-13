@@ -147,7 +147,7 @@
 
   <script>
     const carrinho = [];
-    
+
     function alterarQuantidade(id, delta) {
       const span = document.getElementById(`qtd-${id}`);
       let atual = parseInt(span.textContent);
@@ -178,13 +178,26 @@
 
     function finalizarCompra() {
       if (carrinho.length === 0) return alert("Seu carrinho está vazio!");
+
+      const usuario = JSON.parse(localStorage.getItem("usuario") || sessionStorage.getItem("usuario"));
+
       let mensagem = "Olá! Quero fazer um pedido:%0A";
       carrinho.forEach(item => {
         mensagem += `${item.qtd}x ${item.produto} - R$ ${(item.preco * item.qtd).toFixed(2)}%0A`;
       });
+
       const total = carrinho.reduce((acc, item) => acc + item.preco * item.qtd, 0);
-      mensagem += `%0ATotal: R$ ${total.toFixed(2)}`;
-      window.open(`https://wa.me/5541996597922?text=${mensagem}`, "_blank");
+      mensagem += `%0ATotal: R$ ${total.toFixed(2)}%0A`;
+
+      if (usuario) {
+        mensagem += `%0A--- Dados do Cliente ---`;
+        mensagem += `%0ANome: ${usuario.nome} ${usuario.sobrenome}`;
+        mensagem += `%0ATurma: ${usuario.turma}`;
+        mensagem += `%0ATipo de entrega: ${usuario.tipoEntrega}`;
+      }
+
+      const url = `https://wa.me/5541996597922?text=${mensagem}`;
+      window.open(url, "_blank");
     }
   </script>
 </body>
