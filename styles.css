@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 * {
   margin: 0;
@@ -57,7 +57,7 @@ select {
 .login-btn {
   background-color: #ff4da6;
   color: white;
-  border: none;
+  border: 1px solid black; /* 🔲 Borda preta fina */
   padding: 12px;
   border-radius: 8px;
   cursor: pointer;
@@ -73,6 +73,8 @@ label {
   display: flex;
   align-items: center;
   font-size: 14px;
-  gap: 6px;
-  margin-top: -5px;
+  gap: 4px;
+  margin-top: -10px;
+  margin-bottom: -5px;
 }
+
