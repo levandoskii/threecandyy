@@ -1,54 +1,96 @@
-let carrinho = [];
+// Salvar dados do usuário
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("loginForm");
 
-function alterarQuantidade(btn, valor) {
-  const span = btn.parentElement.querySelector("span");
-  let qtd = parseInt(span.textContent);
-  qtd = Math.max(0, qtd + valor);
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const nome = document.getElementById("nome").value;
+      const sobrenome = document.getElementById("sobrenome").value;
+      const turma = document.getElementById("turma").value;
+      const tipoEntrega = document.getElementById("tipoEntrega").value;
+      const manterLogado = document.getElementById("manterLogado").checked;
+
+      const dados = {
+        nome,
+        sobrenome,
+        turma,
+        tipoEntrega
+      };
+
+      if (manterLogado) {
+        localStorage.setItem("usuario", JSON.stringify(dados));
+      } else {
+        sessionStorage.setItem("usuario", JSON.stringify(dados));
+      }
+
+      window.location.href = "home.html";
+    });
+  }
+
+  // Verificar se há dados salvos
+  const usuario = JSON.parse(localStorage.getItem("usuario") || sessionStorage.getItem("usuario"));
+  if (usuario && window.location.pathname.includes("home.html")) {
+    document.querySelector(".mensagem-boas-vindas")?.insertAdjacentHTML("afterbegin", `<p>Olá, ${usuario.nome}!</p>`);
+  }
+});
+
+// Navegar para o catálogo
+function irParaCatalogo() {
+  window.location.href = "catalogo.html";
+}
+
+// Carrinho
+const carrinho = [];
+function alterarQuantidade(id, valor) {
+  const span = document.getElementById(`qtd-${id}`);
+  let qtd = parseInt(span.textContent) + valor;
+  if (qtd < 0) qtd = 0;
   span.textContent = qtd;
 }
 
-function adicionar(btn) {
-  const div = btn.parentElement;
-  const nome = div.dataset.nome;
-  const preco = parseFloat(div.dataset.preco);
-  const qtd = parseInt(div.querySelector("span").textContent);
+function adicionarAoCarrinho(produto, preco, idSpan) {
+  const qtd = parseInt(document.getElementById(idSpan).textContent);
   if (qtd > 0) {
-    carrinho.push({ nome, qtd, preco });
+    carrinho.push({ produto, preco, qtd });
     atualizarCarrinho();
   }
 }
 
 function atualizarCarrinho() {
-  const lista = document.getElementById("itens");
-  const totalEl = document.getElementById("total");
+  const lista = document.getElementById("itensCarrinho");
+  const total = document.getElementById("precoTotal");
   lista.innerHTML = "";
-  let total = 0;
 
+  let precoFinal = 0;
   carrinho.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = `- ${item.nome}: ${item.qtd} unidade(s)`;
-    lista.appendChild(li);
-    total += item.qtd * item.preco;
+    lista.innerHTML += `<li>${item.produto}: ${item.qtd} unidade(s) - R$ ${(item.preco * item.qtd).toFixed(2)}</li>`;
+    precoFinal += item.preco * item.qtd;
   });
 
-  totalEl.textContent = `Total: R$ ${total.toFixed(2)}`;
+  total.textContent = `Total: R$ ${precoFinal.toFixed(2)}`;
 }
 
-function pagar() {
-  const dados = JSON.parse(localStorage.getItem("dadosUsuario") || sessionStorage.getItem("dadosUsuario"));
-  let msg = "Olá, tenho um pedido:\n";
+function finalizarCompra() {
+  const usuario = JSON.parse(localStorage.getItem("usuario") || sessionStorage.getItem("usuario"));
+  if (!usuario) {
+    alert("Usuário não identificado.");
+    return;
+  }
+
+  let mensagem = `Olá, tenho um pedido:\n`;
   let total = 0;
 
   carrinho.forEach(item => {
-    msg += `- ${item.nome}: ${item.qtd} unidade(s)\n`;
-    total += item.qtd * item.preco;
+    mensagem += `- ${item.produto}: ${item.qtd} unidade(s)\n`;
+    total += item.preco * item.qtd;
   });
 
-  msg += `Total: R$ ${total.toFixed(2)}\n`;
-  msg += `Nome: ${dados.nome} ${dados.sobrenome}\n`;
-  msg += `Turma: ${dados.turma}\n`;
-  msg += `Tipo de entrega: ${dados.tipoEntrega}`;
+  mensagem += `Total: R$ ${total.toFixed(2)}\n`;
+  mensagem += `Nome: ${usuario.nome} ${usuario.sobrenome}\n`;
+  mensagem += `Turma: ${usuario.turma}\n`;
+  mensagem += `Tipo de entrega: ${usuario.tipoEntrega}`;
 
-  const url = `https://wa.me/5541996597922?text=${encodeURIComponent(msg)}`;
+  const url = `https://wa.me/5541996597922?text=${encodeURIComponent(mensagem)}`;
   window.open(url, "_blank");
 }
