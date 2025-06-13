@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Three Candy - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <h1>Three Candy</h1>
+    <p class="slogan">Três vezes mais sabor, carinho e alegria</p>
+
+    <form id="loginForm">
+      <input type="text" id="nome" placeholder="Nome" required>
+      <input type="text" id="sobrenome" placeholder="Sobrenome" required>
+      <input type="text" id="turma" placeholder="Turma" required>
+      <select id="tipoEntrega" required>
+        <option value="encomenda">Encomenda</option>
+        <option value="hoje">Entrega no dia</option>
+      </select>
+      <label><input type="checkbox" id="manterLogado"> Manter conectado</label>
+      <button type="submit">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const dados = {
+        nome: document.getElementById("nome").value.trim(),
+        sobrenome: document.getElementById("sobrenome").value.trim(),
+        turma: document.getElementById("turma").value.trim(),
+        tipoEntrega: document.getElementById("tipoEntrega").value
+      };
+
+      const manter = document.getElementById("manterLogado").checked;
+
+      if (manter) {
+        localStorage.setItem("dadosUsuario", JSON.stringify(dados));
+      } else {
+        sessionStorage.setItem("dadosUsuario", JSON.stringify(dados));
+      }
+
+      window.location.href = "home.html";
+    });
+  </script>
+</body>
+</html>
