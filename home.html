@@ -1,43 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Início - Three Candy</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Candy - Início</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
-<body class="inicio-body">
-  <div class="inicio-container">
-    <header>
-      <h1 class="titulo-principal">Three Candy</h1>
-      <img src="images/logo.png" alt="Logo da Three Candy" class="logo-img" />
-      <p class="slogan">Três vezes mais sabor, carinho e alegria</p>
-    </header>
+<body class="home-body">
+  <div class="home-container">
+    <h1 class="home-title">Three Candy</h1>
+    <h2 class="home-slogan">Três vezes mais sabor, carinho e alegria</h2>
 
-    <main>
-      <p class="boas-vindas">
-        Seja bem-vindo ao nosso cantinho que mais adoça vidas!<br />
-        Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você.<br />
-        Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!
-      </p>
+    <p class="mensagem-boas-vindas">
+      Seja bem-vindo ao nosso cantinho que mais adoça vidas!<br>
+      Aqui, cada detalhe é feito com carinho: dos brigadeiros aos brownies artesanais, tudo é preparado para encantar você.<br>
+      Venha viver momentos especiais e adoçar o seu dia com a gente — será um prazer te receber!
+    </p>
 
-      <a href="catalogo.html" class="botao-catalogo">Ir para o Catálogo</a>
+    <button onclick="window.location.href='catalogo.html'" class="catalogo-btn-home">Ir para o Catálogo</button>
 
-      <div class="info-boxes">
-        <div class="info-item">
-          <img src="images/icone1.png" alt="Ícone 1" />
-          <p>Acesse seus pedidos com facilidade!</p>
-        </div>
-        <div class="info-item">
-          <img src="images/icone2.png" alt="Ícone 2" />
-          <p>Faça seu pedido e saboreie doces incríveis!</p>
-        </div>
-        <div class="info-item">
-          <img src="images/icone3.png" alt="Ícone 3" />
-          <p>Rápido, prático e feito com carinho!</p>
-        </div>
+    <div class="info-section">
+      <div class="info-item">
+        <img src="images/usuario.png" alt="Perfil">
+        <p>Acesse seus pedidos com facilidade!</p>
       </div>
-    </main>
+      <div class="info-item">
+        <img src="images/pedido.png" alt="Pedido">
+        <p>Faça seu pedido e saboreie doces incríveis!</p>
+      </div>
+      <div class="info-item">
+        <img src="images/cupcake.png" alt="Cupcake">
+        <p>Doces personalizados para você!</p>
+      </div>
+    </div>
   </div>
 </body>
 </html>
