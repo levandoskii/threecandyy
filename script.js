@@ -28,15 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Verificar se há dados salvos
+  // Exibir mensagem personalizada na home
   const usuario = JSON.parse(localStorage.getItem("usuario") || sessionStorage.getItem("usuario"));
   if (usuario && window.location.pathname.includes("home.html")) {
     document.querySelector(".mensagem-boas-vindas")?.insertAdjacentHTML("afterbegin", `<p>Olá, ${usuario.nome}!</p>`);
   }
 });
 
-// Navegar para o catálogo
-function irParaCatalogo() {
+// Navegar para o catálogounction irParaCatalogo() {
   window.location.href = "catalogo.html";
 }
 
@@ -94,3 +93,4 @@ function finalizarCompra() {
   const url = `https://wa.me/5541996597922?text=${encodeURIComponent(mensagem)}`;
   window.open(url, "_blank");
 }
+
