@@ -5,6 +5,7 @@ body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #91c5ff, #f9a8d4);
   color: #333;
+  text-align: center;
 }
 
 /* ====== LOGIN PAGE ====== */
@@ -97,85 +98,26 @@ body {
 
 /* ====== HOME PAGE ====== */
 .inicio-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
   background: linear-gradient(to right, #91c5ff, #f9a8d4);
-  color: #222;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
 }
 
 .inicio-container {
-  padding: 40px 20px;
   max-width: 1000px;
   margin: 0 auto;
-  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .titulo-principal {
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 900;
   background: linear-gradient(to right, #ff69b4, #007bff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-}
-
-.logo-img {
-  width: 120px;
-  margin: 10px auto;
-  display: block;
-}
-
-.slogan {
-  font-size: 20px;
-  font-style: italic;
-  color: #555;
-  margin-bottom: 40px;
-}
-
-.boas-vindas {
-  font-size: 18px;
-  font-weight: 500;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 20px;
-  border-radius: 12px;
-  margin-bottom: 30px;
-  line-height: 1.6;
-}
-
-.botao-catalogo {
-  display: inline-block;
-  background-color: #fff;
-  color: #000;
-  padding: 12px 24px;
-  border: 2px solid #000;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  margin-bottom: 50px;
-  transition: background 0.3s ease;
-}
-
-.botao-catalogo:hover {
-  background-color: #f0f0f0;
-}
-
-.info-boxes {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px;
-  margin-top: 20px;
-}
-
-.info-item {
-  width: 200px;
-  text-align: center;
-}
-
-.info-item img {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
-}
-
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  margin-bott
